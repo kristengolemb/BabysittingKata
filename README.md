@@ -19,4 +19,4 @@ In order to get paid for 1 night of work
 I want to calculate my nightly charge
 
 Notes:
-Bed time is not specified, so I will leave it up to the babysitter (honor system!).
+Bed time will be hardcoded as 8pm.

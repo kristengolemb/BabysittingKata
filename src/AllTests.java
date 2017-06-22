@@ -1,11 +1,11 @@
 import static org.junit.Assert.*;
 
 import java.time.LocalTime;
-
 import org.junit.Before;
 import org.junit.Test;
 import main.StartTime;
 import main.EndTime;
+
 
 public class AllTests {
 
@@ -25,5 +25,11 @@ public class AllTests {
 		EndTime et = new EndTime();
 		assertEquals("End time accepted",et.getEndTime(LocalTime.of(04, 00)));
 	}
-
+	
+	@Test
+	public void test16RateBetweenMidnightandEndTime() {
+		Rates betweenMidnightandEndTime = new Rates();
+		assertEquals(64,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime(4));
+		
+	}
 }
