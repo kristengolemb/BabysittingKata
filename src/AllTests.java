@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import main.StartTime;
 import main.EndTime;
+import main.Rates;
 
 
 public class AllTests {
@@ -16,8 +17,9 @@ public class AllTests {
 	
 	@Test
 	public void testArrivalTimeisNotBeforeFive() {
-		StartTime st = new StartTime();
-		assertEquals("Start time accepted",st.getStartTime(LocalTime.of(17, 00)));
+		LocalTime actualStart = LocalTime.of(17,30);
+		LocalTime fivepm = LocalTime.of(17,00);
+		equals(actualStart.isAfter(fivepm));
 	}
 	
 	@Test
@@ -36,11 +38,5 @@ public class AllTests {
 	public void test16RateBetweenMidnightandEndTime() {
 		Rates betweenMidnightandEndTime = new Rates();
 		assertEquals(64,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime(4));
-	}
-	
-	@Test
-	public void testTotalOwed() {
-		Rates newRate = new Rates();
-		assertEquals(132,newRate.totalOwed(36, 32, 64));
 	}
 }

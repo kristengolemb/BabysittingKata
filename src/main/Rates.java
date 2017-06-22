@@ -4,22 +4,20 @@ import java.time.temporal.ChronoUnit;
 import java.time.temporal.Temporal;
 import java.util.HashMap;
 
-import main.StartTime;
-import main.EndTime;
-
 public class Rates {
-	StartTime start = new StartTime();
+	
+	LocalTime start = LocalTime.of(17,00);
 	LocalTime bed = LocalTime.of(20,00);
 	LocalTime midnight = LocalTime.of(00, 00);
-	EndTime end = new EndTime();
-	int invoice = 0;
+	LocalTime end = LocalTime.of(04, 00);
+	int invoiceTotal = 0;
 
 	long rateBetweenStartandBed = 12;
 	long rateBetweenBedandMidnight = 8;
 	long rateBetweenMidnightandDeparture = 16;
 
 	public long getHoursBetweenArrivalandBedtime() {
-		long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(LocalTime.of(start), bed);
+		long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
 		return hoursBetweenArrivalandBedtime;
 	}
 	
@@ -28,18 +26,8 @@ public class Rates {
 		return hoursBetweenBedandMidnight;
 	}
 	
-	public long getHoursBetweenMidnightandEndTime(int lateNightHours) {
-		long hoursBetweenMidnightandEnd = 4;
-//		return hoursBetweenBedandMidnight;
-		long payRate3 = (hoursBetweenMidnightandEnd*rateBetweenMidnightandDeparture);
-		return payRate3;
+	public long getHoursBetweenMidnightandEndTime() {
+		long hoursBetweenMidnightandEnd = ChronoUnit.HOURS.between(midnight, end);
+		return hoursBetweenMidnightandEnd;
 	}
-	
-	public int totalOwed (long hoursBetweenArrivalandBed, long hoursBetweenBedandMidnight, long hoursBetweenMidnightandEnd) {
-		invoice = (int) ((hoursBetweenArrivalandBed*rateBetweenStartandBed) + (hoursBetweenBedandMidnight*rateBetweenBedandMidnight) +
-				(hoursBetweenMidnightandEnd*rateBetweenMidnightandDeparture));
-		return invoice;
-	}
-	
-
 }
