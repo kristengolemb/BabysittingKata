@@ -45,4 +45,11 @@ public class AllTests {
 		Rates betweenMidnightandEndTime = new Rates();
 		assertEquals(64,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime());
 	}
+	
+	@Test
+	public void totalOwedtoBabysitter() {
+		Rates totalOwed = new Rates();
+		assertEquals(132,totalOwed.calculateTotal(36, 32,
+				64));
+	}
 }

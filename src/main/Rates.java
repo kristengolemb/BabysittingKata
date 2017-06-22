@@ -31,4 +31,9 @@ public class Rates {
 		long lateNightPay = (hoursBetweenMidnightandEnd*rateBetweenMidnightandDeparture);
 		return lateNightPay;
 	}
+	
+	public long calculateTotal(long earlyNightPay, long middleNightPay, long lateNightPay) {
+		long totalOwed = (earlyNightPay + middleNightPay + lateNightPay);
+		return totalOwed;
+	}
 }
