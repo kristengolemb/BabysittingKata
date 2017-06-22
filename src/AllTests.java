@@ -6,19 +6,11 @@ import org.junit.Test;
 import main.Rates;
 
 
-public class AllTests {
-
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	
+public class AllTests {	
 	@Test
 	public void testArrivalTimeisNotBeforeFive() {
-		Rates startTime = new Rates();
-		LocalTime actualStart = LocalTime.of(17,30);
-		LocalTime fivepm = LocalTime.of(17,00);
-		equals(actualStart.isAfter(fivepm));
+		Rates startTime = new Rates();		
+		assertEquals("Acceptable start time.",startTime.testArrival(LocalTime.of(17, 00)));
 	}
 	
 	@Test

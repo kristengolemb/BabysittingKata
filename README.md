@@ -19,4 +19,4 @@ In order to get paid for 1 night of work
 I want to calculate my nightly charge
 
 Notes:
-Bed time will be hardcoded as 8pm.
+Attempting to use StartTime and EndTime classes started to get really complicated, so the project has been streamlined into one class that sets the start, bed, and end times and calculates the hours worked and amount owed to the babysitter. CHRONOUNIT.Hours ensures that the babysitter is only paid for full hours, though it is a little unfair (for example, if the babysitter worked until 9:45, they would only be paid up until 9 as CHRONOUNIT rounds down).
