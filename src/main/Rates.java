@@ -28,6 +28,7 @@ public class Rates {
 	
 	public long getHoursBetweenMidnightandEndTime() {
 		long hoursBetweenMidnightandEnd = ChronoUnit.HOURS.between(midnight, end);
-		return hoursBetweenMidnightandEnd;
+		long lateNightPay = (hoursBetweenMidnightandEnd*rateBetweenMidnightandDeparture);
+		return lateNightPay;
 	}
 }
