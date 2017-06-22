@@ -1,4 +1,7 @@
 import static org.junit.Assert.*;
+
+import java.time.LocalTime;
+
 import org.junit.Before;
 import org.junit.Test;
 import main.StartTime;
@@ -9,10 +12,11 @@ public class AllTests {
 	public void setUp() throws Exception {
 	}
 
-StartTime st = new StartTime();	
+	
 	@Test
-	public void testArrivalTime() {	  
-		assertEquals(st,StartTime.getStartTime());
+	public void testArrivalTimeisNotBeforeFive() {
+		StartTime st = new StartTime();
+		assertEquals("Start time accepted",st.getStartTime(LocalTime.of(17, 00)));
 	}
 
 }
