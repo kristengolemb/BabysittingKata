@@ -29,13 +29,18 @@ public class AllTests {
 	@Test
 	public void test8RateBetweenBedandMidnight() {
 		Rates betweenBedandMidnight = new Rates();
-		assertEquals(32,betweenBedandMidnight.getHoursBetweenBedandMidnight(4));
+		assertEquals(32,betweenBedandMidnight.getHoursBetweenBedandMidnight());
 	}
 	
 	@Test
 	public void test16RateBetweenMidnightandEndTime() {
 		Rates betweenMidnightandEndTime = new Rates();
 		assertEquals(64,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime(4));
-		
+	}
+	
+	@Test
+	public void testTotalOwed() {
+		Rates newRate = new Rates();
+		assertEquals(132,newRate.totalOwed(36, 32, 64));
 	}
 }
