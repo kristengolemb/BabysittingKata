@@ -22,10 +22,12 @@ public class Rates {
 		return hoursBetweenArrivalandBedtime;
 	}
 	
-	public long getHoursBetweenBedandMidnight() {
-		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between((Temporal) bed, midnight);
-		return hoursBetweenBedandMidnight;
+	public long getHoursBetweenBedandMidnight(int bedAndMidnightHours) {
+		long hoursBetweenBedandMidnight = 4;
+		long payrate2 = (hoursBetweenBedandMidnight*rateBetweenBedandMidnight);
+		return payrate2;
 	}
+	
 	
 	public long getHoursBetweenMidnightandEndTime(int lateNightHours) {
 		long hoursBetweenMidnightandEnd = 4;
@@ -33,14 +35,4 @@ public class Rates {
 		long payRate3 = (hoursBetweenMidnightandEnd*rateBetweenMidnightandDeparture);
 		return payRate3;
 	}
-
-//public Integer getRate (int hours, int hourlyPay) {
-//	int amtOwed = 0;
-//	
-//	if (hoursBetweenArrivalandBedtime > 0) {
-//		amtOwed += hoursBetweenArrivalandBedtime * rateBetweenStartandBed;
-//	}
-//	
-//	return amtOwed;
-//}
 }
