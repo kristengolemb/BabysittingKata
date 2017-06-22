@@ -2,9 +2,9 @@ package main;
 import java.time.*;
 
 public class StartTime {
-	public LocalTime getStartTime() {
+	public static LocalTime getStartTime() {
 		LocalTime startTime = LocalTime.of(17,00);
-		LocalTime actualArrivalTime = LocalTime.of(16, 30);
+		LocalTime actualArrivalTime = LocalTime.of(17,00);
 		if (actualArrivalTime.isBefore(startTime)) {
 			System.out.println("Too early to clock in!");
 		}
