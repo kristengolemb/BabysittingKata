@@ -15,9 +15,8 @@ public class AllTests {
 	
 	@Test
 	public void testEndTimeisBeforeFourAM() {
-		LocalTime actualEnd = LocalTime.of(03, 30);
-		LocalTime fouram = LocalTime.of(04, 00);
-		equals(actualEnd.isBefore(fouram));
+		Rates endTime = new Rates();
+		assertEquals("Acceptable end time.",endTime.testDeparture(LocalTime.of(02,00)));
 	}
 	
 	@Test

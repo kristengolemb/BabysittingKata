@@ -19,6 +19,13 @@ public class Rates {
 		}
 		else return "Unacceptable start time.";
 	}
+	
+	public String testDeparture(LocalTime depart) {
+		if (depart.isBefore(LocalTime.of(03, 59))) {
+			return "Acceptable end time.";
+		}
+		else return "Unacceptable end time.";
+	}
 
 	public long getHoursBetweenArrivalandBedtime() { 
 		long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
