@@ -1,8 +1,6 @@
 package main;
 import java.time.*;
 import java.time.temporal.ChronoUnit;
-import java.time.temporal.Temporal;
-import java.util.HashMap;
 
 public class Rates {
 	
@@ -18,12 +16,14 @@ public class Rates {
 
 	public long getHoursBetweenArrivalandBedtime() {
 		long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
-		return hoursBetweenArrivalandBedtime;
+		long earlyNightPay = (hoursBetweenArrivalandBedtime*rateBetweenStartandBed);
+		return earlyNightPay;
 	}
 	
 	public long getHoursBetweenBedandMidnight() {
-		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed, midnight);
-		return hoursBetweenBedandMidnight;
+		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
+		long middleNightPay = (hoursBetweenBedandMidnight*rateBetweenBedandMidnight);
+		return middleNightPay;
 	}
 	
 	public long getHoursBetweenMidnightandEndTime() {

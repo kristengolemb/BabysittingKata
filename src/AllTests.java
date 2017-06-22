@@ -3,8 +3,6 @@ import static org.junit.Assert.*;
 import java.time.LocalTime;
 import org.junit.Before;
 import org.junit.Test;
-import main.StartTime;
-import main.EndTime;
 import main.Rates;
 
 
@@ -28,6 +26,12 @@ public class AllTests {
 		LocalTime actualEnd = LocalTime.of(03, 30);
 		LocalTime fouram = LocalTime.of(04, 00);
 		equals(actualEnd.isBefore(fouram));
+	}
+	
+	@Test
+	public void test12RateBetweenStartandBed() {
+		Rates betweenStartandBed = new Rates();
+		assertEquals(36,betweenStartandBed.getHoursBetweenArrivalandBedtime());
 	}
 	
 	@Test
