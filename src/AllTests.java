@@ -25,6 +25,12 @@ public class AllTests {
 	}
 	
 	@Test
+	public void testLeavingRightOnTime() {
+		Rates endTime = new Rates();
+		assertEquals("Leaving right on time.",endTime.testDeparture(LocalDateTime.of(2017, 06, 02, 04, 00)));
+	}
+	
+	@Test
 	public void test$12RateBetweenStartandBed() {
 		Rates betweenStartandBed = new Rates();
 		assertEquals(36,betweenStartandBed.getHoursBetweenArrivalandBedtime());

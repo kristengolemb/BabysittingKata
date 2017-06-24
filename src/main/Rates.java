@@ -27,6 +27,9 @@ public class Rates {
 		if (depart.isBefore(LocalDateTime.of(2017, 06, 02, 04, 00))) {
 			return "Acceptable end time.";
 		}
+		else if (depart.equals(LocalDateTime.of(2017, 06, 02, 04, 00))) {
+			return "Leaving right on time.";
+		}
 		else return "Unacceptable end time.";
 	}
 
