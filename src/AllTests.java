@@ -13,6 +13,12 @@ public class AllTests {
 	}
 	
 	@Test
+	public void testArrivalTimeisRightOnTime() {
+		Rates startTime = new Rates();		
+		assertEquals("Right on time!",startTime.testArrival(LocalDateTime.of(2017, 06, 01, 17,00)));
+	}
+	
+	@Test
 	public void testEndTimeisBeforeFourAM() {
 		Rates endTime = new Rates();
 		assertEquals("Acceptable end time.",endTime.testDeparture(LocalDateTime.of(2017, 06, 02, 02,00)));

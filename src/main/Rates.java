@@ -17,6 +17,9 @@ public class Rates {
 		if (start.isAfter(LocalDateTime.of(2017, 06, 01, 17, 00))) {
 			return "Acceptable start time.";
 		}
+		else if (start.equals(LocalDateTime.of(2017, 06, 01, 17,00))) {
+			return "Right on time!";
+		}
 		else return "Unacceptable start time.";
 	}
 	
@@ -32,7 +35,6 @@ public class Rates {
 		long earlyNightPay = (hoursBetweenArrivalandBedtime*rateBetweenStartandBed);
 		return earlyNightPay;
 	}
-
 
 	public long getHoursBetweenBedandMidnight() {
 		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
