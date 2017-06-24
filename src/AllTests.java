@@ -1,7 +1,6 @@
 import static org.junit.Assert.*;
 
-import java.time.LocalTime;
-import org.junit.Before;
+import java.time.LocalDateTime;
 import org.junit.Test;
 import main.Rates;
 
@@ -10,13 +9,13 @@ public class AllTests {
 	@Test
 	public void testArrivalTimeisNotBeforeFive() {
 		Rates startTime = new Rates();		
-		assertEquals("Acceptable start time.",startTime.testArrival(LocalTime.of(17, 00)));
+		assertEquals("Acceptable start time.",startTime.testArrival(LocalDateTime.of(2017, 06, 01, 17, 00)));
 	}
 	
 	@Test
 	public void testEndTimeisBeforeFourAM() {
 		Rates endTime = new Rates();
-		assertEquals("Acceptable end time.",endTime.testDeparture(LocalTime.of(02,00)));
+		assertEquals("Acceptable end time.",endTime.testDeparture(LocalDateTime.of(2017, 06, 02, 02,00)));
 	}
 	
 	@Test

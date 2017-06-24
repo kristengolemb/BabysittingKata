@@ -4,24 +4,24 @@ import java.time.temporal.ChronoUnit;
 
 public class Rates {
 
-	LocalTime start = LocalTime.of(17,00);
-	LocalTime bed = LocalTime.of(20,00);
-	LocalTime midnight = LocalTime.of(00,00);
-	LocalTime end = LocalTime.of(04, 00);
+	LocalDateTime start = LocalDateTime.of(2017, 06, 01, 17,00);
+	LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
+	LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
+	LocalDateTime end = LocalDateTime.of(2017, 06, 02, 04, 00);
 
 	long rateBetweenStartandBed = 12;
 	long rateBetweenBedandMidnight = 8;
 	long rateBetweenMidnightandDeparture = 16;
 	
-	public String testArrival(LocalTime start) {
-		if (start.isAfter(LocalTime.of(16, 59))) {
+	public String testArrival(LocalDateTime start) {
+		if (start.isAfter(LocalDateTime.of(2017, 06, 01, 17, 00))) {
 			return "Acceptable start time.";
 		}
 		else return "Unacceptable start time.";
 	}
 	
-	public String testDeparture(LocalTime depart) {
-		if (depart.isBefore(LocalTime.of(03, 59))) {
+	public String testDeparture(LocalDateTime depart) {
+		if (depart.isBefore(LocalDateTime.of(2017, 06, 02, 04, 00))) {
 			return "Acceptable end time.";
 		}
 		else return "Unacceptable end time.";
@@ -36,7 +36,6 @@ public class Rates {
 
 	public long getHoursBetweenBedandMidnight() {
 		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
-		hoursBetweenBedandMidnight = (hoursBetweenBedandMidnight*(-1));
 		long middleNightPay = (hoursBetweenBedandMidnight*rateBetweenBedandMidnight);
 		return middleNightPay;
 	}
