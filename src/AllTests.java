@@ -9,7 +9,7 @@ public class AllTests {
 	@Test
 	public void testArrivalTimeisNotBeforeFive() {
 		Rates startTime = new Rates();		
-		assertEquals("Acceptable start time.",startTime.testArrival(LocalDateTime.of(2017, 06, 01, 17, 00)));
+		assertEquals("Unacceptable start time.",startTime.testArrival(LocalDateTime.of(2017, 06, 01, 16, 30)));
 	}
 	
 	@Test
@@ -19,19 +19,19 @@ public class AllTests {
 	}
 	
 	@Test
-	public void test12RateBetweenStartandBed() {
+	public void test$12RateBetweenStartandBed() {
 		Rates betweenStartandBed = new Rates();
 		assertEquals(36,betweenStartandBed.getHoursBetweenArrivalandBedtime());
 	}
 	
 	@Test
-	public void test8RateBetweenBedandMidnight() {
+	public void test$8RateBetweenBedandMidnight() {
 		Rates betweenBedandMidnight = new Rates();
 		assertEquals(32,betweenBedandMidnight.getHoursBetweenBedandMidnight());
 	}
 	
 	@Test
-	public void test16RateBetweenMidnightandEndTime() {
+	public void test$16RateBetweenMidnightandEndTime() {
 		Rates betweenMidnightandEndTime = new Rates();
 		assertEquals(64,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime());
 	}
