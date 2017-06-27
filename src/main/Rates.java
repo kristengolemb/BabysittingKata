@@ -8,10 +8,11 @@ public class Rates {
 	LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
 	LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
 	LocalDateTime end = LocalDateTime.of(2017, 06, 02, 04, 00);
-
-	long rateBetweenStartandBed = 12;
-	long rateBetweenBedandMidnight = 8;
-	long rateBetweenMidnightandDeparture = 16;
+	
+//unnecessary as the rates will never change
+//	long rateBetweenStartandBed = 12;
+//	long rateBetweenBedandMidnight = 8;
+//	long rateBetweenMidnightandDeparture = 16;
 	
 	public String testArrival(LocalDateTime start) {
 		if (start.isAfter(LocalDateTime.of(2017, 06, 01, 17, 00))) {
@@ -33,26 +34,25 @@ public class Rates {
 		else return "Unacceptable end time.";
 	}
 
-	public long getHoursBetweenArrivalandBedtime() { 
+	public long getHoursBetweenArrivalandBedtime(LocalDateTime start, LocalDateTime bed) { 
 		long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
-		long earlyNightPay = (hoursBetweenArrivalandBedtime*rateBetweenStartandBed);
-		return earlyNightPay;
+		return hoursBetweenArrivalandBedtime;
 	}
 
-	public long getHoursBetweenBedandMidnight() {
+	public long getHoursBetweenBedandMidnight(LocalDateTime bed, LocalDateTime midnight) {
 		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
-		long middleNightPay = (hoursBetweenBedandMidnight*rateBetweenBedandMidnight);
-		return middleNightPay;
+		return hoursBetweenBedandMidnight;
 	}
 
-	public long getHoursBetweenMidnightandEndTime() {
+	public long getHoursBetweenMidnightandEndTime(LocalDateTime midnight, LocalDateTime end) {
 		long hoursBetweenMidnightandEnd = ChronoUnit.HOURS.between(midnight, end);
-		long lateNightPay = (hoursBetweenMidnightandEnd*rateBetweenMidnightandDeparture);
-		return lateNightPay;
+		return hoursBetweenMidnightandEnd;
 	}
 
-	public long calculateTotal(long earlyNightPay, long middleNightPay, long lateNightPay) {
-		long totalOwed = (earlyNightPay + middleNightPay + lateNightPay);
+	public long calculateTotal(long hoursBetweenArrivalandBedtime, long hoursBetweenBedandMidnight, long hoursBetweenMidnightandEnd) {
+		long totalOwed = ((hoursBetweenArrivalandBedtime*12) +
+                (hoursBetweenBedandMidnight*8) +
+                (hoursBetweenMidnightandEnd*16));
 		return totalOwed;
 	}
 }
