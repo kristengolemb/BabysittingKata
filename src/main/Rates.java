@@ -32,7 +32,7 @@ public class Rates {
 		}
 		else return "Unacceptable end time.";
 	}
-	public long getTotalBetweenArrivalandBedtime(LocalDateTime start, LocalDateTime bed, LocalDateTime midnight) {
+	public long getTotalBetweenArrivalandBedtime(LocalDateTime start, LocalDateTime bed) {
 		if (start.isBefore(bed)) {
 			long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
 			long totalBetweenStartandBed = (hoursBetweenArrivalandBedtime * rate1);
@@ -46,7 +46,7 @@ public class Rates {
 		else return 0; 
 	}
 
-	public long getTotalBetweenBedandMidnight(LocalDateTime bed, LocalDateTime midnight, LocalDateTime end) {
+	public long getTotalBetweenBedandMidnight(LocalDateTime bed, LocalDateTime end) {
 		if (bed.isBefore(midnight)) {
 			long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
 			long totalBetweenBedandMidnight = (hoursBetweenBedandMidnight * rate2);
@@ -60,7 +60,7 @@ public class Rates {
 		else return 0;
 	}
 	
-	public long getTotalBetweenMidnightandEndTime(LocalDateTime bed, LocalDateTime midnight, LocalDateTime end) {
+	public long getTotalBetweenMidnightandEndTime(LocalDateTime bed, LocalDateTime end) {
 		if (end.isAfter(midnight)) {
 			long hoursBetweenMidnightandEnd = ChronoUnit.HOURS.between(midnight, end);
 			long totalBetweenMidnightandEnd = (hoursBetweenMidnightandEnd * rate3);
