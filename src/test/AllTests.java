@@ -87,9 +87,18 @@ public class AllTests {
 	}
 	
 	@Test
+	public void testLeavingBeforeMidnight() {
+		Rates leavingBeforeMidnight = new Rates();
+		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
+		LocalDateTime end = LocalDateTime.of(2017, 06, 01, 23,30);
+		assertEquals(0,leavingBeforeMidnight.getHoursBetweenMidnightandEndTime(midnight, end));
+	}
+
+//start @ 5, bedtime @ 8pm, end @ 4am	
+	@Test
 	public void totalOwedtoBabysitter() {
 		Rates totalOwed = new Rates();
 		assertEquals(132,totalOwed.calculateTotal(32, 36,
 				64));
-	}
+	}	
 }

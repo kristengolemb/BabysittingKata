@@ -32,7 +32,7 @@ public class Rates {
 		}
 		else return "Unacceptable end time.";
 	}
-//if babysitter arrives after bedtime, rate1 does not apply
+	//if babysitter arrives after bedtime, rate1 does not apply
 	public long getHoursBetweenArrivalandBedtime(LocalDateTime start, LocalDateTime bed) {
 		if (start.isBefore(bed)) {
 			long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
@@ -42,20 +42,24 @@ public class Rates {
 		else return 0;
 	}
 
-//if bedtime is after midnight, rate2 does not apply
+	//if bedtime is after midnight, rate2 does not apply
 	public long getHoursBetweenBedandMidnight(LocalDateTime bed, LocalDateTime midnight) {
 		if (bed.isBefore(midnight)) {
-		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
-		long totalBetweenBedandMidnight = (hoursBetweenBedandMidnight * rate2);
-		return totalBetweenBedandMidnight;
+			long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
+			long totalBetweenBedandMidnight = (hoursBetweenBedandMidnight * rate2);
+			return totalBetweenBedandMidnight;
 		}
 		else return 0;
 	}
 
+//if babysitter leaves before midnight, rate 3 does not apply	
 	public long getHoursBetweenMidnightandEndTime(LocalDateTime midnight, LocalDateTime end) {
-		long hoursBetweenMidnightandEnd = ChronoUnit.HOURS.between(midnight, end);
-		long totalBetweenMidnightandEnd = (hoursBetweenMidnightandEnd * rate3);
-		return totalBetweenMidnightandEnd;
+		if (end.isAfter(midnight)) {
+			long hoursBetweenMidnightandEnd = ChronoUnit.HOURS.between(midnight, end);
+			long totalBetweenMidnightandEnd = (hoursBetweenMidnightandEnd * rate3);
+			return totalBetweenMidnightandEnd;
+		}
+		else return 0;
 	}
 
 	public long calculateTotal(long totalBetweenStartandBed, long totalBetweenBedandMidnight, long totalBetweenMidnightandEnd) {
