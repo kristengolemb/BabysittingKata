@@ -8,12 +8,7 @@ public class Rates {
 	LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
 	LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
 	LocalDateTime end = LocalDateTime.of(2017, 06, 02, 04, 00);
-	
-//unnecessary as the rates will never change
-//	long rateBetweenStartandBed = 12;
-//	long rateBetweenBedandMidnight = 8;
-//	long rateBetweenMidnightandDeparture = 16;
-	
+		
 	public String testArrival(LocalDateTime start) {
 		if (start.isAfter(LocalDateTime.of(2017, 06, 01, 17, 00))) {
 			return "Acceptable start time.";

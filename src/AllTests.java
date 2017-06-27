@@ -19,6 +19,13 @@ public class AllTests {
 	}
 	
 	@Test
+	public void testArrivalTimeisAfterFive() {
+		Rates startTime = new Rates();
+		assertEquals("Acceptable start time.",startTime.testArrival(LocalDateTime.of(2017, 06, 01, 18,00)));
+
+	}
+	
+	@Test
 	public void testEndTimeisBeforeFourAM() {
 		Rates endTime = new Rates();
 		assertEquals("Acceptable end time.",endTime.testDeparture(LocalDateTime.of(2017, 06, 02, 02,00)));
@@ -28,6 +35,12 @@ public class AllTests {
 	public void testLeavingRightOnTime() {
 		Rates endTime = new Rates();
 		assertEquals("Leaving right on time.",endTime.testDeparture(LocalDateTime.of(2017, 06, 02, 04, 00)));
+	}
+	
+	@Test
+	public void testLeavingAfterFourAM() {
+		Rates endTime = new Rates();
+		assertEquals("Unacceptable end time.",endTime.testDeparture(LocalDateTime.of(2017, 06, 02, 04,30)));
 	}
 	
 	//testing partial hour math
@@ -59,7 +72,7 @@ public class AllTests {
 	@Test
 	public void totalOwedtoBabysitter() {
 		Rates totalOwed = new Rates();
-		assertEquals(132,totalOwed.calculateTotal(36, 32,
-				64));
+		assertEquals(132,totalOwed.calculateTotal(3, 4,
+				4));
 	}
 }
