@@ -8,11 +8,11 @@ public class Rates {
 	LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
 	LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
 	LocalDateTime end = LocalDateTime.of(2017, 06, 02, 04, 00);
-	
+
 	long rate1 = 12;
 	long rate2 = 8;
 	long rate3 = 16;
-		
+
 	public String testArrival(LocalDateTime start) {
 		if (start.isAfter(LocalDateTime.of(2017, 06, 01, 17, 00))) {
 			return "Acceptable start time.";
@@ -22,7 +22,7 @@ public class Rates {
 		}
 		else return "Unacceptable start time.";
 	}
-	
+
 	public String testDeparture(LocalDateTime depart) {
 		if (depart.isBefore(LocalDateTime.of(2017, 06, 02, 04, 00))) {
 			return "Acceptable end time.";
@@ -34,9 +34,12 @@ public class Rates {
 	}
 
 	public long getHoursBetweenArrivalandBedtime(LocalDateTime start, LocalDateTime bed) {
-		long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
-		long totalBetweenStartandBed = (hoursBetweenArrivalandBedtime * rate1);
-		return totalBetweenStartandBed;
+		if (start.isBefore(bed)) {
+			long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
+			long totalBetweenStartandBed = (hoursBetweenArrivalandBedtime * rate1);
+			return totalBetweenStartandBed; 
+		}
+		else return 0;
 	}
 
 	public long getHoursBetweenBedandMidnight(LocalDateTime bed, LocalDateTime midnight) {
