@@ -71,6 +71,14 @@ public class AllTests {
 	}
 	
 	@Test
+	public void testBedtimeAfterMidnight() {
+		Rates bedAfterMidnight = new Rates();
+		LocalDateTime bed = LocalDateTime.of(2017,  06, 02, 00,30);
+		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
+		assertEquals(0,bedAfterMidnight.getHoursBetweenBedandMidnight(bed, midnight));
+	}
+	
+	@Test
 	public void testHoursBetweenMidnightandEndTime() {
 		Rates betweenMidnightandEndTime = new Rates();
 		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
