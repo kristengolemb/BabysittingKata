@@ -49,7 +49,7 @@ public class AllTests {
 		Rates betweenStartandBed = new Rates();
 		LocalDateTime start = LocalDateTime.of(2017, 06, 01, 18,30);
 		LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
-		assertEquals(1,betweenStartandBed.getHoursBetweenArrivalandBedtime(start, bed));
+		assertEquals(12,betweenStartandBed.getHoursBetweenArrivalandBedtime(start, bed));
 	}
 	
 	//again testing partial hours
@@ -58,21 +58,21 @@ public class AllTests {
 		Rates betweenBedandMidnight = new Rates();
 		LocalDateTime bed = LocalDateTime.of(2017,  06, 01, 20,45);
 		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
-		assertEquals(3,betweenBedandMidnight.getHoursBetweenBedandMidnight(bed, midnight));
+		assertEquals(24,betweenBedandMidnight.getHoursBetweenBedandMidnight(bed, midnight));
 	}
 	
 	@Test
 	public void testHoursBetweenMidnightandEndTime() {
 		Rates betweenMidnightandEndTime = new Rates();
-		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,01);
+		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
 		LocalDateTime end = LocalDateTime.of(2017, 06, 02, 02,01);
-		assertEquals(2,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime(midnight, end));
+		assertEquals(32,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime(midnight, end));
 	}
 	
 	@Test
 	public void totalOwedtoBabysitter() {
 		Rates totalOwed = new Rates();
-		assertEquals(132,totalOwed.calculateTotal(3, 4,
-				4));
+		assertEquals(132,totalOwed.calculateTotal(32, 36,
+				64));
 	}
 }

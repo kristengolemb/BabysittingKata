@@ -8,6 +8,10 @@ public class Rates {
 	LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
 	LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
 	LocalDateTime end = LocalDateTime.of(2017, 06, 02, 04, 00);
+	
+	long rate1 = 12;
+	long rate2 = 8;
+	long rate3 = 16;
 		
 	public String testArrival(LocalDateTime start) {
 		if (start.isAfter(LocalDateTime.of(2017, 06, 01, 17, 00))) {
@@ -29,25 +33,26 @@ public class Rates {
 		else return "Unacceptable end time.";
 	}
 
-	public long getHoursBetweenArrivalandBedtime(LocalDateTime start, LocalDateTime bed) { 
+	public long getHoursBetweenArrivalandBedtime(LocalDateTime start, LocalDateTime bed) {
 		long hoursBetweenArrivalandBedtime = ChronoUnit.HOURS.between(start, bed);
-		return hoursBetweenArrivalandBedtime;
+		long totalBetweenStartandBed = (hoursBetweenArrivalandBedtime * rate1);
+		return totalBetweenStartandBed;
 	}
 
 	public long getHoursBetweenBedandMidnight(LocalDateTime bed, LocalDateTime midnight) {
 		long hoursBetweenBedandMidnight = ChronoUnit.HOURS.between(bed,midnight);
-		return hoursBetweenBedandMidnight;
+		long totalBetweenBedandMidnight = (hoursBetweenBedandMidnight * rate2);
+		return totalBetweenBedandMidnight;
 	}
 
 	public long getHoursBetweenMidnightandEndTime(LocalDateTime midnight, LocalDateTime end) {
 		long hoursBetweenMidnightandEnd = ChronoUnit.HOURS.between(midnight, end);
-		return hoursBetweenMidnightandEnd;
+		long totalBetweenMidnightandEnd = (hoursBetweenMidnightandEnd * rate3);
+		return totalBetweenMidnightandEnd;
 	}
 
-	public long calculateTotal(long hoursBetweenArrivalandBedtime, long hoursBetweenBedandMidnight, long hoursBetweenMidnightandEnd) {
-		long totalOwed = ((hoursBetweenArrivalandBedtime*12) +
-                (hoursBetweenBedandMidnight*8) +
-                (hoursBetweenMidnightandEnd*16));
+	public long calculateTotal(long totalBetweenStartandBed, long totalBetweenBedandMidnight, long totalBetweenMidnightandEnd) {
+		long totalOwed = totalBetweenStartandBed + totalBetweenBedandMidnight + totalBetweenMidnightandEnd;
 		return totalOwed;
 	}
 }
