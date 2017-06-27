@@ -7,6 +7,7 @@ import main.Rates;
 
 
 public class AllTests {	
+	LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
 	@Test
 	public void testArrivalTimeisNotBeforeFive() {
 		Rates startTime = new Rates();		
@@ -50,7 +51,7 @@ public class AllTests {
 		Rates betweenStartandBed = new Rates();
 		LocalDateTime start = LocalDateTime.of(2017, 06, 01, 18,30);
 		LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
-		assertEquals(12,betweenStartandBed.getHoursBetweenArrivalandBedtime(start, bed));
+		assertEquals(12,betweenStartandBed.getHoursBetweenArrivalandBedtime(start, bed, midnight));
 	}
 	
 	@Test
@@ -58,7 +59,7 @@ public class AllTests {
 		Rates startAfterBed = new Rates();
 		LocalDateTime start = LocalDateTime.of(2017, 06, 01, 21,00);
 		LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20,00);
-		assertEquals(0,startAfterBed.getHoursBetweenArrivalandBedtime(start, bed));
+		assertEquals(24,startAfterBed.getHoursBetweenArrivalandBedtime(start, bed, midnight));
 	}
 	
 	//again testing partial hours
@@ -67,31 +68,35 @@ public class AllTests {
 		Rates betweenBedandMidnight = new Rates();
 		LocalDateTime bed = LocalDateTime.of(2017,  06, 01, 20,45);
 		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
-		assertEquals(24,betweenBedandMidnight.getHoursBetweenBedandMidnight(bed, midnight));
+		LocalDateTime end = LocalDateTime.of(2017, 06, 02, 04,00);
+		assertEquals(24,betweenBedandMidnight.getHoursBetweenBedandMidnight(bed, midnight, end));
 	}
 	
-	@Test
+	@Test 
 	public void testBedtimeAfterMidnight() {
 		Rates bedAfterMidnight = new Rates();
-		LocalDateTime bed = LocalDateTime.of(2017,  06, 02, 00,30);
+		LocalDateTime bed = LocalDateTime.of(2017, 06, 02, 01, 00);
 		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
-		assertEquals(0,bedAfterMidnight.getHoursBetweenBedandMidnight(bed, midnight));
+		LocalDateTime end = LocalDateTime.of(2017, 06, 02, 04,00);
+		assertEquals(48,bedAfterMidnight.getHoursBetweenBedandMidnight(bed, midnight, end));
 	}
-	
+		
 	@Test
 	public void testHoursBetweenMidnightandEndTime() {
 		Rates betweenMidnightandEndTime = new Rates();
+		LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20, 00);
 		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
 		LocalDateTime end = LocalDateTime.of(2017, 06, 02, 02,01);
-		assertEquals(32,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime(midnight, end));
+		assertEquals(32,betweenMidnightandEndTime.getHoursBetweenMidnightandEndTime(bed, midnight, end));
 	}
 	
 	@Test
 	public void testLeavingBeforeMidnight() {
 		Rates leavingBeforeMidnight = new Rates();
+		LocalDateTime bed = LocalDateTime.of(2017, 06, 01, 20, 00);
 		LocalDateTime midnight = LocalDateTime.of(2017, 06, 02, 00,00);
-		LocalDateTime end = LocalDateTime.of(2017, 06, 01, 23,30);
-		assertEquals(0,leavingBeforeMidnight.getHoursBetweenMidnightandEndTime(midnight, end));
+		LocalDateTime end = LocalDateTime.of(2017, 06, 01, 22,00);
+		assertEquals(16,leavingBeforeMidnight.getHoursBetweenMidnightandEndTime(bed, midnight, end));
 	}
 
 //start @ 5, bedtime @ 8pm, end @ 4am	
